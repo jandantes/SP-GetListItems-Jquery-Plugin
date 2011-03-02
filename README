@@ -1,0 +1,10 @@
+Usage:
+$().getListItems({
+	listId: "{AF3C71B5-3828-45B7-8E10-3971550C69C8}",
+	rowLimit: 1,
+	custFunc: function(xData,Status){
+		$(xData.responseXML).find("[nodeName='z:row']").each(function(){     
+			console.log($(this).attr("ows_ID"));
+		});
+	}
+});
