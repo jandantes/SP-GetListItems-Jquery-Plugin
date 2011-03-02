@@ -1,3 +1,7 @@
+Based from SPServices http://spservices.codeplex.com/
+I've been doing lots of web service call with Sharepoint's Lists (/_vti_bin/lists.asmx) 
+so I've decided to create a jQuery plugin just for getlistitems.
+
 Usage:
 $().getListItems({
 	listId: "{AF3C71B5-3828-45B7-8E10-3971550C69C8}",
