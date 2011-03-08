@@ -17,9 +17,9 @@
         	<GetListItems xmlns='http://schemas.microsoft.com/sharepoint/soap/'>\
     			<listName>"+options.listId+"</listName>\
           		<viewFields><ViewFields>"+options.fields+"</ViewFields></viewFields>\
-           		<query><Query>"+options.filter+"</Query></query>\
-           		<rowLimit>"+options.rowLimit+"</rowLimit>\
-			</GetListItems></soapenv:Body></soapenv:Envelope>", 
+           		<query><Query>"+options.filter+"</Query></query>"+
+           		(options.rowLimit ? "<rowLimit>"+options.rowLimit+"</rowLimit>" : "") +
+			"</GetListItems></soapenv:Body></soapenv:Envelope>", 
     		complete:	options.custFunc
     	});
 	};
