@@ -1,13 +1,14 @@
 (function($){
-	$.fn.getListItems = function(options){	 
+	$.fn.getListItems = function(opts){	 
 		var defaults = {
 			listId: "",
 			fields: "",
 			filter: "",
 			rowLimit: null,
-			custFunc: null
+			custFunc: null,
+			qOptions: ""
 		};
-	  	var options = $.extend(defaults,options); 
+	  	var opts = $.extend(defaults,opts); 
    		$.ajax({
     		url: "/contents/_vti_bin/lists.asmx",
         	type: "POST",
@@ -15,12 +16,13 @@
         	contentType: "text/xml; charset=\"utf-8\"",
         	data: "<soapenv:Envelope xmlns:soapenv='http://schemas.xmlsoap.org/soap/envelope/'><soapenv:Body>\
         	<GetListItems xmlns='http://schemas.microsoft.com/sharepoint/soap/'>\
-    			<listName>"+options.listId+"</listName>\
-          		<viewFields><ViewFields>"+options.fields+"</ViewFields></viewFields>\
-           		<query><Query>"+options.filter+"</Query></query>"+
-           		(options.rowLimit ? "<rowLimit>"+options.rowLimit+"</rowLimit>" : "") +
+    			<listName>"+opts.listId+"</listName>\
+          		<viewFields><ViewFields>"+opts.fields+"</ViewFields></viewFields>\
+           		<query><Query>"+opts.filter+"</Query></query>"+
+           		"<queryOptions><QueryOptions xmlns='' >" + opts.qOptions + "</QueryOptions></queryOptions>"
+           		 + (opts.rowLimit ? "<rowLimit>"+opts.rowLimit+"</rowLimit>" : "") +
 			"</GetListItems></soapenv:Body></soapenv:Envelope>", 
-    		complete:	options.custFunc
+    		complete:opts.custFunc
     	});
 	};
 })(jQuery);
