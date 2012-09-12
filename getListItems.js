@@ -6,11 +6,13 @@
 			filter: "",
 			rowLimit: null,
 			custFunc: null,
-			qOptions: ""
+			qOptions: "",
+			siteURL: ""
+			
 		};
 	  	var opts = $.extend(defaults,opts); 
    		$.ajax({
-	    		url: "/contents/_vti_bin/lists.asmx",
+	    		url: opts.siteURL,
 	        	type: "POST",
 	        	dataType: "xml",        
 	        	contentType: "text/xml; charset=\"utf-8\"",
